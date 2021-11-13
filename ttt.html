@@ -1,0 +1,1031 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html>
+<head>
+<title>Tic Tac Toe</title>
+<meta name="author" content="Dave Moore" />
+
+<script type="text/javascript" src="http://ajax.googleapis.com/ajax/libs/jquery/1.4.2/jquery.min.js"></script>
+<script type="text/javascript">
+var s = new Array(0, 0, 0, 0, 0, 0, 0, 0, 0); //Default value for squares is empty
+var numPlayers = 1; //Default number of players is 1
+
+$(document).ready(function() {
+    $("span#userFirst").click(function() {
+        numPlayers = 1;
+        newGamePlayerFirst();
+    });
+    $("span#compFirst").click(function() {
+        numPlayers = 1;
+        newGameComputerFirst();
+    });
+    $("span#twoPlayers").click(function() {
+        numPlayers = 2;
+        newGamePlayerFirst();
+    });
+
+    $("td#0").click(function() {
+        if(s[0] == 0) {
+            if(numPlayers == 2) {
+                if(calculateTurnNumber() % 2 == 0) {
+                    $("td#0").html("X");
+                    s[0] = 1;
+                }
+                else {
+                    $("td#0").html("O");
+                    s[0] = 2;
+                }
+
+                isGameOver();
+            }
+
+            if(numPlayers == 1) {
+                $("td#0").html("X");
+                s[0] = 1;
+
+                if(isGameOver() == 0) {
+                    computerMove();
+                    isGameOver();
+                }
+            }
+        }
+    });
+    $("td#1").click(function() {
+        if(s[1] == 0) {
+            if(numPlayers == 2) {
+                if(calculateTurnNumber() % 2 == 0) {
+                    $("td#1").html("X");
+                    s[1] = 1;
+                }
+                else {
+                    $("td#1").html("O");
+                    s[1] = 2;
+                }
+
+                isGameOver();
+            }
+
+            if(numPlayers == 1) {
+                $("td#1").html("X");
+                s[1] = 1;
+
+                if(isGameOver() == 0) {
+                    computerMove();
+                    isGameOver();
+                }
+            }
+        }
+    });
+    $("td#2").click(function() {
+        if(s[2] == 0) {
+            if(numPlayers == 2) {
+                if(calculateTurnNumber() % 2 == 0) {
+                    $("td#2").html("X");
+                    s[2] = 1;
+                }
+                else {
+                    $("td#2").html("O");
+                    s[2] = 2;
+                }
+
+                isGameOver();
+            }
+
+            if(numPlayers == 1) {
+                $("td#2").html("X");
+                s[2] = 1;
+
+                if(isGameOver() == 0) {
+                    computerMove();
+                    isGameOver();
+                }
+            }
+        }
+    });
+    $("td#3").click(function() {
+        if(s[3] == 0) {
+            if(numPlayers == 2) {
+                if(calculateTurnNumber() % 2 == 0) {
+                    $("td#3").html("X");
+                    s[3] = 1;
+                }
+                else {
+                    $("td#3").html("O");
+                    s[3] = 2;
+                }
+
+                isGameOver();
+            }
+
+            if(numPlayers == 1) {
+                $("td#3").html("X");
+                s[3] = 1;
+
+                if(isGameOver() == 0) {
+                    computerMove();
+                    isGameOver();
+                }
+            }
+        }
+    });
+    $("td#4").click(function() {
+        if(s[4] == 0) {
+            if(numPlayers == 2) {
+                if(calculateTurnNumber() % 2 == 0) {
+                    $("td#4").html("X");
+                    s[4] = 1;
+                }
+                else {
+                    $("td#4").html("O");
+                    s[4] = 2;
+                }
+
+                isGameOver();
+            }
+
+            if(numPlayers == 1) {
+                $("td#4").html("X");
+                s[4] = 1;
+
+                if(isGameOver() == 0) {
+                    computerMove();
+                    isGameOver();
+                }
+            }
+        }
+    });
+    $("td#5").click(function() {
+        if(s[5] == 0) {
+            if(numPlayers == 2) {
+                if(calculateTurnNumber() % 2 == 0) {
+                    $("td#5").html("X");
+                    s[5] = 1;
+                }
+                else {
+                    $("td#5").html("O");
+                    s[5] = 2;
+                }
+
+                isGameOver();
+            }
+
+            if(numPlayers == 1) {
+                $("td#5").html("X");
+                s[5] = 1;
+
+                if(isGameOver() == 0) {
+                    computerMove();
+                    isGameOver();
+                }
+            }
+        }
+    });
+    $("td#6").click(function() {
+        if(s[6] == 0) {
+            if(numPlayers == 2) {
+                if(calculateTurnNumber() % 2 == 0) {
+                    $("td#6").html("X");
+                    s[6] = 1;
+                }
+                else {
+                    $("td#6").html("O");
+                    s[6] = 2;
+                }
+
+                isGameOver();
+            }
+
+            if(numPlayers == 1) {
+                $("td#6").html("X");
+                s[6] = 1;
+
+                if(isGameOver() == 0) {
+                    computerMove();
+                    isGameOver();
+                }
+            }
+        }
+    });
+    $("td#7").click(function() {
+        if(s[7] == 0) {
+            if(numPlayers == 2) {
+                if(calculateTurnNumber() % 2 == 0) {
+                    $("td#7").html("X");
+                    s[7] = 1;
+                }
+                else {
+                    $("td#7").html("O");
+                    s[7] = 2;
+                }
+
+                isGameOver();
+            }
+
+            if(numPlayers == 1) {
+                $("td#7").html("X");
+                s[7] = 1;
+
+                if(isGameOver() == 0) {
+                    computerMove();
+                    isGameOver();
+                }
+            }
+        }
+    });
+    $("td#8").click(function() {
+        if(s[8] == 0) {
+            if(numPlayers == 2) {
+                if(calculateTurnNumber() % 2 == 0) {
+                    $("td#8").html("X");
+                    s[8] = 1;
+                }
+                else {
+                    $("td#8").html("O");
+                    s[8] = 2;
+                }
+
+                isGameOver();
+            }
+
+            if(numPlayers == 1) {
+                $("td#8").html("X");
+                s[8] = 1;
+
+                if(isGameOver() == 0) {
+                    computerMove();
+                    isGameOver();
+                }
+            }
+        }
+    });
+
+});
+
+function calculateTurnNumber() {
+    x = 0;
+    for (n in s) {
+        if(s[n] !=0) {
+            x++;
+        }
+    }
+
+    return x;
+}
+
+function computerMove() {
+    if(calculateTurnNumber() == 1) {
+        if(s[4] == 0) {
+            $("td#4").html("O");
+            s[4] = 2;
+        }
+        else {
+            $("td#8").html("O");
+            s[8] = 2;
+        }
+    }
+    else if(check4Win() == 0) {
+        makeMove();
+    }
+}
+
+function check4Win() {
+    //When to play top-left
+    if(((s[1] == 2 && s[2] == 2) || (s[4] == 2 && s[8] == 2) || (s[3] == 2 && s[6] == 2)) && s[0] == 0) {
+        $("td#0").html("O");
+        s[0] = 2;
+        return 1;
+    }
+    //When to play top-center
+    else if(((s[4] == 2 && s[7] == 2) || (s[0] == 2 && s[2] == 2)) && s[1] == 0) {
+        $("td#1").html("O");
+        s[1] = 2;
+        return 1;
+    }
+    //When to play top-right
+    else if(((s[1] == 2 && s[0] == 2) || (s[4] == 2 && s[6] == 2) || (s[5] == 2 && s[8] == 2)) && s[2] == 0) {
+        $("td#2").html("O");
+        s[2] = 2;
+        return 1;
+    }
+    //When to play middle-left
+    else if(((s[4] == 2 && s[5] == 2) || (s[0] == 2 && s[6] == 2)) && s[3] == 0) {
+        $("td#3").html("O");
+        s[3] = 2;
+        return 1;
+    }
+    //When to play middle
+    else if(((s[0] == 2 && s[8] == 2) || (s[1] == 2 && s[7] == 2) || (s[2] == 2 && s[6] == 2) || (s[3] == 2 && s[5] == 2)) && s[4] == 0) {
+        $("td#4").html("O");
+        s[4] = 2;
+        return 1;
+    }
+    //When to play middle-right
+    else if(((s[4] == 2 && s[3] == 2) || (s[2] == 2 && s[8] == 2)) && s[5] == 0) {
+        $("td#5").html("O");
+        s[5] = 2;
+        return 1;
+    }
+    //When to play bottom-left
+    else if(((s[0] == 2 && s[3] == 2) || (s[2] == 2 && s[4] == 2) || (s[7] == 2 && s[8] == 2)) && s[6] == 0) {
+        $("td#6").html("O");
+        s[6] = 2;
+        return 1;
+    }
+    //When to play bottom center
+    else if(((s[4] == 2 && s[1] == 2) || (s[6] == 2 && s[8] == 2)) && s[7] == 0) {
+        $("td#7").html("O");
+        s[7] = 2;
+        return 1;
+    }
+    //When to play bottom-right
+    else if(((s[6]== 2 && s[7] == 2) || (s[0] == 2 && s[4] == 2) || (s[2] == 2 && s[5] == 2)) && s[8] == 0) {
+        $("td#8").html("O");
+        s[8] = 2;
+        return 1;
+    }
+
+    return 0;
+}
+
+function makeMove() {
+    //Special Case
+    if(s[0] == 0 && s[1]== 2 && s[2]== 1 && s[3]== 0 && s[4]== 0 && s[5]== 0 && s[6]== 0 && s[7]== 1 && s[8]== 0) {
+        $("td#8").html("O");
+        s[8] = 2;
+    }
+    //Special Case
+    else if(s[0] == 0 && s[1]== 0 && s[2]== 0 && s[3]== 0 && s[4]== 2 && s[5]== 1 && s[6]== 0 && s[7]== 1 && s[8]== 0) {
+        $("td#8").html("O");
+        s[8] = 2;
+    }
+    //Speical Case
+    else if(s[0] == 1 && s[1]== 2 && s[2]== 0 && s[3]== 0 && s[4]== 0 && s[5]== 0 && s[6]== 0 && s[7]== 1 && s[8]== 0) {
+        $("td#8").html("O");
+        s[8] = 2;
+    }
+    //Speical Case
+    else if(s[0] == 1 && s[1]== 0 && s[2]== 0 && s[3]== 0 && s[4]== 2 && s[5]== 0 && s[6]== 0 && s[7]== 1 && s[8]== 2) {
+        $("td#2").html("O");
+        s[2] = 2;
+    }
+    //Speical Case
+    else if(s[0] == 1 && s[1]== 0 && s[2]== 0 && s[3]== 0 && s[4]== 2 && s[5]== 1 && s[6]== 0 && s[7]== 0 && s[8]== 2) {
+        $("td#6").html("O");
+        s[6] = 2;
+    }
+    //Speical Case
+    else if(s[0] == 0 && s[1]== 0 && s[2]== 1 && s[3]== 0 && s[4]== 2 && s[5]== 0 && s[6]== 1 && s[7]== 0 && s[8]== 0) {
+        $("td#1").html("O");
+        s[1] = 2;
+    }
+    //Speical Case
+    else if(s[0] == 1 && s[1]== 0 && s[2]== 0 && s[3]== 0 && s[4]== 1 && s[5]== 0 && s[6]== 0 && s[7]== 0 && s[8]== 2) {
+        $("td#2").html("O");
+        s[2] = 2;
+    }
+    //Speical Case
+    else if(s[0] == 1 && s[1]== 0 && s[2]== 0 && s[3]== 0 && s[4]== 2 && s[5]== 1 && s[6]== 0 && s[7]== 0 && s[8]== 0) {
+        $("td#7").html("O");
+        s[7] = 2;
+    }
+    //Speical Case
+    else if(s[0] == 1 && s[1]== 0 && s[2]== 0 && s[3]== 0 && s[4]== 2 && s[5]== 0 && s[6]== 0 && s[7]== 1 && s[8]== 0) {
+        $("td#3").html("O");
+        s[3] = 2;
+    }
+    //Speical Case
+    else if(s[0] == 1 && s[1]== 0 && s[2]== 0 && s[3]== 2 && s[4]== 2 && s[5]== 1 && s[6]== 0 && s[7]== 1 && s[8]== 0) {
+        $("td#8").html("O");
+        s[8] = 2;
+    }
+    //Speical Case
+    else if(s[0] == 0 && s[1]== 0 && s[2]== 1 && s[3]== 0 && s[4]== 2 && s[5]== 0 && s[6]== 0 && s[7]== 1 && s[8]== 0) {
+        $("td#5").html("O");
+        s[5] = 2;
+    }
+    //When to play top-left defensively
+    else if(((s[1] == 1 && s[2] == 1) || (s[4] == 1 && s[8] == 1) || (s[3] == 1 && s[6] == 1)) && s[0] == 0) {
+        $("td#0").html("O");
+        s[0] = 2;
+    }
+    //When to play top-center defensively
+    else if(((s[4] == 1 && s[7] == 1) || (s[0] == 1 && s[2] == 1)) && s[1] == 0) {
+        $("td#1").html("O");
+        s[1] = 2;
+    }
+    //When to play top-right defensively
+    else if(((s[1] == 1 && s[0] == 1) || (s[4] == 1 && s[6] == 1) || (s[5] == 1 && s[8] == 1)) && s[2] == 0) {
+        $("td#2").html("O");
+        s[2] = 2;
+    }
+    //When to play middle-left defensively
+    else if(((s[4] == 1 && s[5] == 1) || (s[0] == 1 && s[6] == 1)) && s[3] == 0) {
+        $("td#3").html("O");
+        s[3] = 2;
+    }
+    //When to play middle defensively
+    else if(((s[0] == 1 && s[8] == 1) || (s[1] == 1 && s[7] == 1) || (s[2] == 1 && s[6] == 1) || (s[3] == 1 && s[5] == 1)) && s[4] == 0) {
+        $("td#4").html("O");
+        s[4] = 2;
+    }
+    //When to play middle-right defensively
+    else if(((s[4] == 1 && s[3] == 1) || (s[2] == 1 && s[8] == 1)) && s[5] == 0) {
+        $("td#5").html("O");
+        s[5] = 2;
+    }
+    //When to play bottom-left defensively
+    else if(((s[0] == 1 && s[3] == 1) || (s[2] == 1 && s[4] == 1) || (s[7] == 1 && s[8] == 1)) && s[6] == 0) {
+        $("td#6").html("O");
+        s[6] = 2;
+    }
+    //When to play bottom-center defensively
+    else if(((s[4] == 1 && s[1] == 1) || (s[6] == 1 && s[8] == 1)) && s[7] == 0) {
+        $("td#7").html("O");
+        s[7] = 2;
+    }
+    //When to play bottom-right defensively
+    else if(((s[6]== 1 && s[7] == 1) || (s[0] == 1 && s[4] == 1) || (s[2] == 1 && s[5] == 1)) && s[8] == 0) {
+        $("td#8").html("O");
+        s[8] = 2;
+    }
+    //Special Case for if the middle space is still open after all other defensive evaluations
+    else if(s[4] == 0) {
+        $("td#4").html("O");
+        s[4] = 2;
+    }
+    //When to play the first available space
+    else {
+        for (n in s) {
+            if(s[n] == 0) {
+                $("td#"+n).html("O");
+                s[n] = 2;
+                break;
+            }
+        }
+    }
+}
+
+function isGameOver() {
+    if(s[0] == 1 && s[1] == 1 && s[2] == 1) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#0").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#1").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#2").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[3] == 1 && s[4] == 1 && s[5] == 1) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#3").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#4").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#5").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[6] == 1 && s[7] == 1 && s[8] == 1) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#6").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#7").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#8").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[0] == 1 && s[3] == 1 && s[6] == 1) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#0").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#3").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#6").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[1] == 1 && s[4] == 1 && s[7] == 1) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#1").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#4").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#7").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[2] == 1 && s[5] == 1 && s[8] == 1) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#2").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#5").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#8").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[0] == 1 && s[4] == 1 && s[8] == 1) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#0").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#4").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#8").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[2] == 1 && s[4] == 1 && s[6] == 1) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#2").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#4").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#6").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[0] == 2 && s[1] == 2 && s[2] == 2) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#0").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#1").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#2").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[3] == 2 && s[4] == 2 && s[5] == 2) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#3").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#4").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#5").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[6] == 2 && s[7] == 2 && s[8] == 2) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#6").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#7").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#8").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[0] == 2 && s[3] == 2 && s[6] == 2) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#0").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#3").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#6").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[1] == 2 && s[4] == 2 && s[7] == 2) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#1").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#4").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#7").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[2] == 2 && s[5] == 2 && s[8] == 2) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#2").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#5").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#8").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[0] == 2 && s[4] == 2 && s[8] == 2) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#0").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#4").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#8").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[2] == 2 && s[4] == 2 && s[6] == 2) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("td#2").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#4").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+        $("td#6").animate({
+            fontSize: "50px",
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+    if(s[0] != 0 && s[1] != 0 && s[2] != 0 && s[3] != 0 && s[4] != 0 && s[5] != 0 && s[6] != 0 && s[7] != 0 && s[8] != 0) {
+        s[0] = 3;
+        s[1] = 3;
+        s[2] = 3;
+        s[3] = 3;
+        s[4] = 3;
+        s[5] = 3;
+        s[6] = 3;
+        s[7] = 3;
+        s[8] = 3;
+
+        $("table").animate({
+            borderWidth: "10px"
+        }, 1500 );
+
+        return 1;
+    }
+
+    return 0;
+}
+
+function newGamePlayerFirst() {
+    $("td").animate({
+        fontSize: "30px",
+        borderWidth: "1px"
+    }, 150 );
+    $("table").animate({
+            borderWidth: "1px"
+    }, 150 );
+
+    s[0] = 0;
+    s[1] = 0;
+    s[2] = 0;
+    s[3] = 0;
+    s[4] = 0;
+    s[5] = 0;
+    s[6] = 0;
+    s[7] = 0;
+    s[8] = 0;
+
+    $("td#0").html("&nbsp;");
+    $("td#1").html("&nbsp;");
+    $("td#2").html("&nbsp;");
+    $("td#3").html("&nbsp;");
+    $("td#4").html("&nbsp;");
+    $("td#5").html("&nbsp;");
+    $("td#6").html("&nbsp;");
+    $("td#7").html("&nbsp;");
+    $("td#8").html("&nbsp;");
+}
+
+function newGameComputerFirst() {
+    $("td").animate({
+        fontSize: "30px",
+        borderWidth: "1px"
+    }, 150 );
+    $("table").animate({
+            borderWidth: "1px"
+    }, 150 );
+
+    s[0] = 0;
+    s[1] = 0;
+    s[2] = 0;
+    s[3] = 0;
+    s[4] = 0;
+    s[5] = 0;
+    s[6] = 0;
+    s[7] = 0;
+    s[8] = 2;
+
+    $("td#0").html("&nbsp;");
+    $("td#1").html("&nbsp;");
+    $("td#2").html("&nbsp;");
+    $("td#3").html("&nbsp;");
+    $("td#4").html("&nbsp;");
+    $("td#5").html("&nbsp;");
+    $("td#6").html("&nbsp;");
+    $("td#7").html("&nbsp;");
+    $("td#8").html("O");
+}
+</script>
+
+<style type="text/css">
+table#board {
+    border-collapse:collapse;
+    border: 1px solid black;
+    margin-left: auto;
+    margin-right: auto;
+}
+table#board td {
+    font-size:30px;
+    border: 1px solid black;
+    text-align:center;
+    width:150px;
+    height:150px;
+}
+div
+{
+    margin-left: auto;
+    margin-right: auto;
+    width:550px;
+    text-align:center;
+    background:#dddddd;
+    border:2px solid;
+    border-radius:25px;
+    -moz-border-radius:25px; /* Firefox 3.6 and earlier */
+}
+span {
+    text-decoration:underline;
+    color:#0000FF;
+}
+</style>
+</head>
+
+<body>
+
+<div>
+<h1>Tic Tac Toe</h1>
+<p>Click a square to begin!</p>
+<table id='board'>
+    <tr>
+        <td id='0'>&nbsp;</td>
+        <td id='1'>&nbsp;</td>
+        <td id='2'>&nbsp;</td>
+    </tr>
+    <tr>
+
+        <td id='3'>&nbsp;</td>
+        <td id='4'>&nbsp;</td>
+        <td id='5'>&nbsp;</td>
+    </tr>
+    <tr>
+        <td id='6'>&nbsp;</td>
+        <td id='7'>&nbsp;</td>
+        <td id='8'>&nbsp;</td>
+    </tr>
+
+</table>
+<br /><br />
+<span id='userFirst'>New Game: One Player, Player Goes First</span>
+<br /><br />
+<span id='compFirst'>New Game: One Player, Computer Goes First</span>
+<br /><br />
+<span id='twoPlayers'>New Game: Two Players</span>
+<br /><br />
+</div>
+</body>
+</html>
